@@ -57,27 +57,24 @@ let globalQueryOfFirstChargePage = {};
  *  2. Get current queries
  * 3. Define links in btn home and btn web application
  */
-export const componentDidMount = () => {
-    document.addEventListener("DOMContentLoaded", async () => {
-        // 1. Increase counter of web page
-        // await Services.getInfoWebPage();
+export const componentDidMount = async () => {
+    // 1. Increase counter of web page
+    // await Services.getInfoWebPage();
 
-        // 2. Get current queries
-        const {category, command, meaning, subcategory} = getQueries(window.location.search);
-        if(category) globalQueryOfFirstChargePage.category = category;
-        if(command) globalQueryOfFirstChargePage.command = command;
-        if(meaning) globalQueryOfFirstChargePage.meaning = meaning;
-        if(subcategory) globalQueryOfFirstChargePage.subcategory = subcategory;
+    // 2. Get current queries
+    const {category, command, meaning, subcategory} = getQueries(window.location.search);
+    if(category) globalQueryOfFirstChargePage.category = category;
+    if(command) globalQueryOfFirstChargePage.command = command;
+    if(meaning) globalQueryOfFirstChargePage.meaning = meaning;
+    if(subcategory) globalQueryOfFirstChargePage.subcategory = subcategory;
 
-        // 3. Define href of anchor "Go home" and "Go web app"
-        const anchorHome = document.getElementById("anc-home");
-        anchorHome.setAttribute("href", "/?" + createQuery(defaultQuery));
+    // 3. Define href of anchor "Go home" and "Go web app"
+    const anchorHome = document.getElementById("anc-home");
+    anchorHome.setAttribute("href", "/?" + createQuery(defaultQuery));
 
-        const anchorUser = document.getElementById("anc-user");
-        anchorUser.setAttribute("href", process.env.WEB_APP_URL);
-        anchorUser.setAttribute('target', '_blank');
-
-    }, {once: true});
+    const anchorUser = document.getElementById("anc-user");
+    anchorUser.setAttribute("href", process.env.WEB_APP_URL);
+    anchorUser.setAttribute('target', '_blank');
 }
 
 /**
