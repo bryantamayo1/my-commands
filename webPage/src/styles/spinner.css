@@ -1,0 +1,22 @@
+.spinner-container{
+    margin-top: 50px;
+}
+.spinner{
+    animation: rotate-spinner 1s infinite linear;
+    border: 3px solid transparent;
+    border-left-color: #ce04a2;
+    border-radius: 50%;
+    box-sizing: border-box;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+@keyframes rotate-spinner {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

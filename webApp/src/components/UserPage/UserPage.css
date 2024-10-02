@@ -1,0 +1,8 @@
+.mc-container-userpage{
+  display: block !important;
+}
+.mc-container-table-userpage{
+  margin-top: 10px;
+  overflow-x: auto;
+  width: 100%;
+}

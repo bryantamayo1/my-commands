@@ -1,0 +1,15 @@
+# Visual Studio Code
+.vscode/
+
+# Node modules
+node_modules/
+
+# Production
+build/
+
+# PM2
+ecosystem.config.js
+
+# Enviroments
+.env.development.local
+.env.production.local

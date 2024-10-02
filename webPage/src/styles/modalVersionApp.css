@@ -1,0 +1,16 @@
+.modal-version{
+    display: none;
+    font-family: 'Ubuntu Mono', monospace;
+}
+.modal-version__container{
+    background-color: #373739;
+    background-image: linear-gradient(62deg, #353538 0%, #2e2e30 33%);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    box-sizing: border-box;
+    width: 90%;
+}
+.modal-version__container--content{
+    box-sizing: border-box;
+    padding: 10px 15px;
+}

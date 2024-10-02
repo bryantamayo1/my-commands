@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu');
+
+footer{
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    padding: 40px 0 20px 0;
+    text-align: center;
+}
+footer > div{
+    align-items: center;
+    display: flex;
+    gap: 0 20px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+footer > div a{
+    color: #9c9c9c;
+    transition: all 0.2s ease-in;
+    align-items: center;
+    background-color: #38353f;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+footer > div a:hover{
+    color: #FFF;
+}
+footer > div a:focus{
+    box-shadow:  0px 0px 15px 2px #ce04a2;
+    color: #FFF;
+    outline: 2px solid #ce04a2; 
+}
+
+.version-app{
+    cursor: pointer;
+}
+.version-app:hover{
+    color: #FFF;
+}

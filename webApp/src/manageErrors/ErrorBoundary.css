@@ -1,0 +1,14 @@
+.mc-container-rrror-boundary{
+  align-items: center;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  font-size: 24px;
+  text-align: center;
+}
+.mc-container-rrror-boundary button{
+  font-size: 18px;
+}

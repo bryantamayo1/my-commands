@@ -1,0 +1,161 @@
+.menu-container{
+  background-color: #ffffff;
+  border-radius: 0 0 10px 20px;
+  box-sizing: border-box;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+  transition: width ease-in 0.2s;
+  width: 30vw;
+}
+.menu-container::before{
+  background-color: transparent;
+  border-top-left-radius: 15px;
+  box-shadow: 0 -25px 0 0 #FFF;
+  box-sizing: border-box;
+  content: "";
+  height: 50px;
+  position: absolute;
+  top: 0;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  width: 30px;
+}
+.menu-container::after{
+  background-color: transparent;
+  border-bottom-left-radius: 15px;
+  box-shadow: 0 25px 0 0 #FFF;
+  box-sizing: border-box;
+  content: "";
+  height: 50px;
+  position: absolute;
+  right: -80px;
+  top: 0;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  width: 30px;
+}
+.menu-container ul{
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  gap: 0 25px;
+  list-style-type: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.menu-container ul li {
+  cursor: pointer;
+}
+.menu-container ul li a{
+  align-items: center;
+  color: black;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Btn hamburger */
+.btn-hamburger__label{
+  cursor: pointer;
+  display: none;
+  float: right;
+  margin: 8px 20px 0 0;
+}
+#btn-hamburger{
+  display: none;
+}
+
+.active-link-menu{
+  align-items: center;
+  color: #1976d2;
+  border-bottom: 1px solid #1976d2;
+  box-sizing: border-box;
+  display: flex;
+  gap: 0 3px;
+  justify-content: center;
+}
+.not-active-link-menu{
+  align-items: center;
+  border-bottom: none;
+  box-sizing: border-box;
+  color: black;
+  display: flex;
+  gap: 0 3px;
+  justify-content: center;
+}
+.menu-title{
+  margin-top: 5px;
+}
+.mc-menu{
+  position: relative;
+}
+.mc-menu-children{
+  display: none;
+  position: absolute;
+  z-index: 9999;
+}
+.mc-menu:hover .mc-menu-children{
+  display: block;
+  left: 0;
+  top: 25px;
+}
+
+
+/* Responsive */
+@media(max-width: 1700px){
+  .menu-container{
+    width: 40vw;
+  }
+}
+@media(max-width: 1200px){
+  .menu-container{
+    width: 50vw;
+  }
+}
+@media(max-width: 1024px){
+  .menu-container{
+    width: 60vw;
+  }
+}
+@media(max-width: 800px){
+  .menu-container{
+    width: 80vw;
+  }
+}
+@media(max-width: 800px){
+  .btn-hamburger__label{
+    display: block;
+  }
+  .menu-container{
+    border-radius: 0;
+    width: 100%;
+  }
+  .menu-container::before, .menu-container::after{
+    display: none;
+  }
+  .menu-container ul{
+    background-color: #FFF;
+    display: block;
+    left: -100%;
+    margin-top: 50px;
+    position: fixed;
+    transition: all ease-in 0.4s;
+    width: 100%;
+    z-index: 99;
+  }
+  .menu-container ul li{
+    margin: 20px 0;
+  }
+  #btn-hamburger:checked ~ ul{
+    left: 0;
+  }
+  .mc-menu-children{
+    width: 100%;
+  }
+  .mc-menu-children > nav{
+    max-width: none;
+  }
+}

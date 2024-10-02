@@ -1,0 +1,68 @@
+{
+    "content": {
+        "search_by": {
+            "en": "Search by",
+            "es": "Buscar por"
+        },
+        "CommandsAndMeaning": {
+            "en": "Command && Meaning",
+            "es": "Comando && significado"
+        },
+        "Command": {
+            "en": "Command",
+            "es": "Comando"
+        },
+        "Meaning": {
+            "en": "Meaning",
+            "es": "Significado"
+        },
+        "categories": {
+            "en": "Categories",
+            "es": "Categorias"
+        },
+        "all": {
+            "en": "All",
+            "es": "Todas"
+        },
+        "btn_apply": {
+            "en": "Apply",
+            "es": "Aplicar"
+        },
+        "footer": {
+            "en": "© 2023 Copyright. Created by Bryan Tamayo",
+            "es": "© 2023 Copyright. Creado por Bryan Tamayo"
+        },
+        "copied": {
+            "en": "Copied!",
+            "es": "Copiado!"
+        },
+        "updatedAt": {
+            "en": "Last modification: ",
+            "es": "Última modificación: "
+        },
+        "createdAt": {
+            "en": "Created at: ",
+            "es": "Creado en: "
+        },
+        "version": {
+            "en": "Version 0.0.3",
+            "es": "Versión 0.0.3"
+        },
+        "0.0.1_1": {
+            "en": "Added control of app’s vesion",
+            "es": "Añadido control de la versión de la aplicación"
+        },
+        "0.0.1_2": {
+            "en": "Added styles of code in each command",
+            "es": "Añadido estilos del código de cada comando"
+        },
+        "0.0.2_1": {
+            "en": "Added web application to handle all resources",
+            "es": "Añadida la aplicación web para el manejo de todos los recursos"
+        },
+        "0.0.3_1": {
+            "en": "Added handle of user’s roles",
+            "es": "Añadido control de roles de usuarios"
+        }
+    }
+}
