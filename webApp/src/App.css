@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+
+body{
+  background-image: linear-gradient(
+    130deg,
+    hsl(226deg 86% 40%) 0%,
+    hsl(233deg 85% 41%) 13%,
+    hsl(241deg 84% 41%) 24%,
+    hsl(248deg 83% 41%) 35%,
+    hsl(256deg 83% 41%) 45%,
+    hsl(263deg 82% 41%) 54%,
+    hsl(271deg 81% 42%) 62%,
+    hsl(279deg 80% 42%) 71%,
+    hsl(286deg 79% 42%) 79%,
+    hsl(294deg 78% 42%) 86%,
+    hsl(301deg 77% 43%) 93%,
+    hsl(309deg 76% 43%) 100%
+  );
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+}
+.mc-container-page{
+  margin: 20px;
+}
+.mc-container-box {
+  background-color: rgba(255, 255, 255, 0.247);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-sizing: border-box;
+  color: #FFF;
+  padding: 15px;
+}
+.mc-modal-btn-close {
+  text-align: end;
+}

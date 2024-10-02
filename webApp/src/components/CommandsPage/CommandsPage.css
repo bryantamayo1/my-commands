@@ -1,0 +1,125 @@
+.mc-container-box{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 20px;
+}
+.mc-container-box .MuiInputLabel-root.Mui-focused{
+    color: #9c27b0 !important;
+} 
+.mc-container-box .MuiSelect-outlined{
+  outline: #9c27b0;
+}
+.mc-container-box .Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: #9c27b0 !important;
+}
+.mc-label{
+  color: #000;
+}
+.mc-prismjs-textarea{
+  background-color: #2d2d2d;
+}
+
+/* Commands */
+.mc-container-commands{
+  display: block;
+  margin-top: 20px;
+}
+.mc-container-commands__info-results{
+  color: #FFF;
+  margin: 15px 0;
+  text-align: center;
+}
+.mc-container-row{
+  display: grid !important;
+  gap: 0 10px;
+  grid-template-columns: 60px auto;
+  margin-bottom: 30px;
+}
+.mc-container-commands__options{
+  align-items: center;
+  background-image: linear-gradient(62deg,#353538,#2e2e30 33%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  padding-top: 10px;
+}
+.mc-container-commands__command{
+  margin-bottom: 10px;
+}
+.mc-container-commands__meanings{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  max-width: 90vw;
+}
+.mc-modal-create-command-field{
+  margin-top: 20px;
+}
+.mc-modal-create-command-btn-submit {
+  margin-top: 20px;
+  text-align: center;
+}
+.mc-code-style{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.mc-container-command{
+  position: relative;
+}
+.mc-container-command > span{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform: scale(0.6) translate(-25%, 50%);
+  z-index: 9;
+}
+.mc-container-command > span:hover{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform: scale(1);
+  z-index: 9;
+}
+
+/* Pagination */
+.mc-container-pagination{
+  background-color: rgba(255, 255, 255, 0.247);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
+  margin: 50px auto 0 auto;
+  width: 30%;
+}
+.mc-container-pagination button{
+  background-color: transparent;
+  border: 0;
+  color: #FFF;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+.mc-container-pagination__selected{
+  background-color: #ffffff7c !important;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media(max-width: 1200px){
+  .mc-container-pagination{
+    width: 40%;
+  }
+}
+@media(max-width: 920px){
+  .mc-container-pagination{
+    width: 60%;
+  }
+}
+@media(max-width: 480px){
+  .mc-container-pagination{
+    flex-wrap: wrap;
+    width: 80%;
+  }
+}

@@ -1,0 +1,41 @@
+@font-face {
+  font-family: Icons;
+  src: url(../fonts/icons.woff);
+}
+
+.icon {
+  font-family: Icons;
+  font-size: 1.4rem;
+}
+
+.icon-lg{
+  font-size: 1.5rem;
+}
+
+.icon-home::after {
+  content: '\e900';
+}
+
+.icon-user::after {
+  content: '\e901';
+}
+
+.icon-search::after {
+  content: '\e902';
+}
+
+.icon-copy::after {
+  content: '\e903';
+}
+
+.icon-info::after {
+  content: '\e904';
+}
+
+.icon-github::after {
+  content: '\f09b';
+}
+
+.icon-linkedln::after {
+  content: '\f0e1';
+}

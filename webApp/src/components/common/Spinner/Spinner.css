@@ -1,0 +1,12 @@
+.mc-container-spinner{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc( 100vh - 50px - 40px );
+}
+.mc-container-spinner-big{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc( 100vh - 50px - 40px - 150px);
+}

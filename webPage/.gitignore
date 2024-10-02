@@ -1,0 +1,12 @@
+# Global variables
+.env.development.local
+.env.production.local
+
+# Production
+build/
+
+# Dependencies
+node_modules/
+
+# Ignore Mac system files 
+.DS_store

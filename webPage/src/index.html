@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bryan David Tamayo Abad">
+    <meta name="description" content="All the commands you need: MySQL, MongoDB, Ubuntu and many more">
+    <meta name="keywords" content="command, MySQL, MariadDB, MongoDB, Ubuntu">
+    <meta property="og:title" content="My commands">
+    <meta property="og:description" content="All the commands you need: MySQL, MongoDB, Ubuntu and many more">
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./img/favicon/android-chrome-512x512.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>My commands</title>
+</head>
+
+<body>
+    <!-- Hnadle errors -->
+    <section id="errors">
+        <span id="errors-msg"></span>
+        <button id="close-alert-error" class="filters__btn__close">
+            <p></p>
+            <p></p>
+        </button>
+    </section>
+
+    <div class="background-home">
+        <header>
+            <a id="anc-home" class="btn-lang anc-clean">
+                <span class="icon icon-home"></span>
+            </a>
+            <a id="anc-user" class="btn-lang anc-clean">
+                <span class="icon icon-user"></span>
+            </a>
+            <button id="es" class="btn-lang">
+                <img src="./img/lang-es.png" alt="spanish" width="20px" height="15px" />
+            </button>
+            <button id="en" class="btn-lang">
+                <img id="en" src="./img/lang-en.png" alt="english" width="20px" height="15px" />
+            </button>
+        </header>
+        <!-- Title web page -->
+        <p id="title-web-page">My commands</p>
+    </div>
+
+    <main>
+        <!-- Search -->
+        <section class="search">
+            <button class="search__button search__button--left">
+                <span class="icon icon-lg icon-search"></span>
+            </button>
+            <input class="search__input">
+            <button class="search__button search__button--right">
+                <!-- Icon filter -->
+                <div id="icon-filter">
+                    <div>
+                        <p class="icon-filter__circle"></p>
+                    </div>
+                    <div>
+                        <p class="icon-filter__circle icon-filter__circle--middle"></p>
+                    </div>
+                    <div>
+                        <p class="icon-filter__circle"></p>
+                    </div>
+                </div>
+            </button>
+        </section>
+
+        <!-- Total commands -->
+        <p class="total-numbers">
+        </p>
+
+        <!-- Filter options -->
+        <section class="filters">
+            <div class="filters__btn__container">
+                <button id="filters__btn__close" class="filters__btn__close">
+                    <p></p>
+                    <p></p>
+                </button>
+            </div>
+
+            <p class="container-filters container-filters__title"></p>
+
+            <!-- Toggles -->
+            <!-- <div class="toggle-container">
+                <button class="toggle">
+                    <span class="toggle__slider"></span>
+                </button>
+                <p class="version-filter">Command && Meaning</p>
+            </div> -->
+            <div class="toggle-container container-filters">
+                <button id="id-btn-all" class="toggle">
+                    <span id="id-span-all" class="toggle__slider"></span>
+                </button>
+                <p id="all" class="version-filter">All</p>
+            </div>
+
+            <!-- Btn apply -->
+            <!-- <div class="btn-apply-container">
+                <button class="btn_apply">
+                    Apply
+                </button>
+            </div> -->
+        </section>
+
+        <!-- List -->
+        <section class="my-container">
+            <!-- Spinner -->
+            <div class="spinner-container">
+                <span class="spinner">
+                </span>
+            </div>
+            <!-- <div class="list-container">
+                <p>111</p>
+                <p>456</p>
+            </div> -->
+        </section>
+
+        <!-- Overlay with modal -->
+        <section class="overlay">
+            <div class="overlay__modal">
+                <!-- Btn close modal -->
+                <div id="filters__btn__container--btn-close-modal" class="filters__btn__container">
+                    <button id="btn-close-modal" class="filters__btn__close">
+                        <p></p>
+                        <p></p>
+                    </button>
+                </div>
+                <div id="container-command-bottom" class="overlay__info">
+                    <button class="container-icon">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                    <pre id="pre-modal"><code id="code-modal"></code></pre>
+                </div>
+                <div class="overlay__info">
+                    <button class="container-icon">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                    <p class="overlay__meaning"></p>
+                </div>
+                <div class="sub-categories">
+                    <!-- <soan class="list-container__row-2__subCategory">DDL</soan> -->
+                </div>
+                <div class="overlay__extra-info">
+                    <div>
+                        <span class="overlay__extra-info--key-1"></span>
+                        <span class="overlay__extra-info--value-1"></span>
+                    </div>
+                    <div>
+                        <span class="overlay__extra-info--key-2"></span>
+                        <span class="overlay__extra-info--value-2"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <section class="pagination-container">
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <a href="https://github.com/bryantamayo1/my-commands" target="_blank">
+                <span class="icon icon-github"></span>
+            </a>
+            <a href="https://linkedin.com/in/bryan-tamayo-abad" target="_blank">
+                <span class="icon icon-linkedln"></span>
+            </a>
+        </div>
+        <p class="version-app"></p>
+        <span class="copyright"></span>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Modal of version app -->
+    <section class="modal-version overlay">
+        <div class="modal-version__container">
+            <!-- Btn close modal -->
+            <div id="modal-version__close" class="filters__btn__container">
+                <button id="btn-close-modal" class="filters__btn__close modal-version__btn-close">
+                    <p></p>
+                    <p></p>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="modal-version__container--content">
+                <h3>0.0.3 (11-07-2023)</h3>
+                <ul>
+                    <li id="0.0.3_1"></li>
+                </ul>
+            </div>
+
+            <div class="modal-version__container--content">
+                <h3>0.0.2 (09-07-2023)</h3>
+                <ul>
+                    <li id="0.0.2_1"></li>
+                </ul>
+            </div>
+
+            <div class="modal-version__container--content">
+                <h3>0.0.1 (13-05-2023)</h3>
+                <ul>
+                    <li id="0.0.1_1"></li>
+                    <li id="0.0.1_2"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Powered by buymeacoffee.com -->
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        data-id="bryantamayo" data-description="Support me on Buy me a coffee!"
+        data-message="Thank you for using my web page. You can now buy me a coffee!" data-color="#BD5FFF"
+        data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</body>
+
+</html>
