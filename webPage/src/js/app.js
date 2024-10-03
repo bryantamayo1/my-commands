@@ -57,27 +57,24 @@ let globalQueryOfFirstChargePage = {};
  *  2. Get current queries
  * 3. Define links in btn home and btn web application
  */
-export const componentDidMount = () => {
-    document.addEventListener("DOMContentLoaded", async () => {
-        // 1. Increase counter of web page
-        // await Services.getInfoWebPage();
+export const componentDidMount = async () => {
+    // 1. Increase counter of web page
+    // await Services.getInfoWebPage();
 
-        // 2. Get current queries
-        const {category, command, meaning, subcategory} = getQueries(window.location.search);
-        if(category) globalQueryOfFirstChargePage.category = category;
-        if(command) globalQueryOfFirstChargePage.command = command;
-        if(meaning) globalQueryOfFirstChargePage.meaning = meaning;
-        if(subcategory) globalQueryOfFirstChargePage.subcategory = subcategory;
+    // 2. Get current queries
+    const {category, command, meaning, subcategory} = getQueries(window.location.search);
+    if(category) globalQueryOfFirstChargePage.category = category;
+    if(command) globalQueryOfFirstChargePage.command = command;
+    if(meaning) globalQueryOfFirstChargePage.meaning = meaning;
+    if(subcategory) globalQueryOfFirstChargePage.subcategory = subcategory;
 
-        // 3. Define href of anchor "Go home" and "Go web app"
-        const anchorHome = document.getElementById("anc-home");
-        anchorHome.setAttribute("href", "/?" + createQuery(defaultQuery));
+    // 3. Define href of anchor "Go home" and "Go web app"
+    const anchorHome = document.getElementById("anc-home");
+    anchorHome.setAttribute("href", "/?" + createQuery(defaultQuery));
 
-        const anchorUser = document.getElementById("anc-user");
-        anchorUser.setAttribute("href", process.env.WEB_APP_URL);
-        anchorUser.setAttribute('target', '_blank');
-
-    }, {once: true});
+    const anchorUser = document.getElementById("anc-user");
+    anchorUser.setAttribute("href", process.env.WEB_APP_URL);
+    anchorUser.setAttribute('target', '_blank');
 }
 
 /**
@@ -217,18 +214,20 @@ export const getCommands = async(lang, page, category, parameterCommandAndMeanin
             const column_3 = document.createElement("pre");
             const column_3_code = document.createElement("code");
             const column_4 = document.createElement("p");
-            const icon_copy = document.createElement("i");
-            const icon_info = document.createElement("i");
+            const icon_copy = document.createElement("span");
+            const icon_info = document.createElement("span");
             const span_subCategory = document.createElement("span");
     
-            icon_copy.classList.add("fa-solid");
-            icon_copy.classList.add("fa-copy");
+            icon_copy.classList.add("icon");
+            icon_copy.classList.add("icon-copy");
+            icon_copy.classList.add("icon-sm");
             column_1.classList.add("container-icon");
             column_1.appendChild(icon_copy);
             column_1.addEventListener("click", (event) => copyClipboard(event, data.data[i].command, column_1, data.lang))
     
-            icon_info.classList.add("fa-solid");
-            icon_info.classList.add("fa-circle-info");
+            icon_info.classList.add("icon");
+            icon_info.classList.add("icon-info");
+            icon_copy.classList.add("icon-sm");
             column_2.classList.add("container-icon");
             column_2.appendChild(icon_info);
             column_2.addEventListener("click", event => openModal(event, data.data[i], data.lang));

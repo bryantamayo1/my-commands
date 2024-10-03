@@ -5,6 +5,7 @@ module.exports = {
   resolve: {
     alias: {
       '@js': path.resolve(__dirname, '../src/js'),
+      '@src': path.resolve(__dirname, '../src'),
     }
   }
 }

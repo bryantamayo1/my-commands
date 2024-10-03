@@ -8,9 +8,9 @@ import { componentDidMount, getInitialQueries, goHome, handleButtonsLanguage, ha
  * First function in executing
  */
 function init() {
-    componentDidMount();
     handleErrors();
     document.addEventListener("DOMContentLoaded", () => {
+        componentDidMount();
         goHome();
         getInitialQueries();
         handleButtonsLanguage();
@@ -27,7 +27,7 @@ function init() {
         copyInClipboardModalCommand();
         copyInClipboardModalMeaning();
         handleModalVersionApp();
-    });
+    }, {once: true});
 }
 
 init();
