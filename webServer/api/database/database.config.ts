@@ -7,7 +7,7 @@ export const dbConnection = async() => {
     try{
         let dataBase = process.env.DATABASE || "";
         
-        if(process.env.MODE === "production"){
+        if(process.env.NODE_ENV === "production"){
             dataBase = dataBase.replace("<PASSWORD>", process.env.DATABASE_PASSWORD!);
         }
 

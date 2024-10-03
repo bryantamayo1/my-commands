@@ -65,11 +65,6 @@ main{
     font-family: 'Ubuntu Mono', monospace;
     min-height: calc( 100vh - 40px - 220px - 1px);
 }
-/* icon search */
-.fa-magnifying-glass{
-    box-sizing: border-box;
-    padding: 2px 0 0 5px;
-}
 /* icon filter */
 #icon-filter{
     width: 20px;

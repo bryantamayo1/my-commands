@@ -214,18 +214,20 @@ export const getCommands = async(lang, page, category, parameterCommandAndMeanin
             const column_3 = document.createElement("pre");
             const column_3_code = document.createElement("code");
             const column_4 = document.createElement("p");
-            const icon_copy = document.createElement("i");
-            const icon_info = document.createElement("i");
+            const icon_copy = document.createElement("span");
+            const icon_info = document.createElement("span");
             const span_subCategory = document.createElement("span");
     
-            icon_copy.classList.add("fa-solid");
-            icon_copy.classList.add("fa-copy");
+            icon_copy.classList.add("icon");
+            icon_copy.classList.add("icon-copy");
+            icon_copy.classList.add("icon-sm");
             column_1.classList.add("container-icon");
             column_1.appendChild(icon_copy);
             column_1.addEventListener("click", (event) => copyClipboard(event, data.data[i].command, column_1, data.lang))
     
-            icon_info.classList.add("fa-solid");
-            icon_info.classList.add("fa-circle-info");
+            icon_info.classList.add("icon");
+            icon_info.classList.add("icon-info");
+            icon_copy.classList.add("icon-sm");
             column_2.classList.add("container-icon");
             column_2.appendChild(icon_info);
             column_2.addEventListener("click", event => openModal(event, data.data[i], data.lang));
