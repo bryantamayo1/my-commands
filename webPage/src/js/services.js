@@ -27,9 +27,16 @@ export class Services{
      * @returns Promise
      */
     static async getCommands(lang = "/en", page = 1, categoryAndSubCategoryToSearch = {category: "all"}, commandAndMeaning, fromQueryUrl, defaultSearch, firstSearch){
-        debugger
         const subCategory = categoryAndSubCategoryToSearch.subCategory;
-
+        // Validations
+        if(+page < 1){
+            page = ""+1;
+            // Update url to particular case
+            let newurl = window.location.protocol + "//" + window.location.host +
+            `?page=${page}&lang=${lang.slice(1, lang.length)}&category=${categoryAndSubCategoryToSearch.category}`;
+            if(subCategory) newurl += "&subcategory=" + categoryAndSubCategoryToSearch.subCategory;
+            window.history.replaceState({path:newurl},'',newurl);
+        }
         /**
          * url to search in BE
          */

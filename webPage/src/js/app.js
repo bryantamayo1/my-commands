@@ -14,7 +14,7 @@ import { Services }             from './services';
 import { changeHeightOfTable, closeMenuFilter} from './effects';
 import { colorsEnum, getQueries, getQueriesCommanMeaning, parseQuery } from './utils';
 import { handlePagination }     from './pagination';
-import { handleLanguages, getDefaultLanguageOfBrowser }      from './languages/handleLanguages';
+import { handleLanguages }      from './languages/handleLanguages';
 import { activeOrDesactiveToggles, createSubCategories, template_Menu_filter } from './menuFilter';
 import dataJson                 from './data.json';
 import { openModal }            from './modalCommand';
@@ -105,9 +105,9 @@ export const getInitialQueries = () => {
         if(subcategory){
             categoryAndSubCategoryToSearch.subCategory = subcategory;
         }
-        getCommands("/"+lang, page, categoryAndSubCategoryToSearch, getQueriesCommanMeaning(queryObject), true);
+        getCommands("/"+lang, page, categoryAndSubCategoryToSearch, getQueriesCommanMeaning(queryObject), true, false, true);
     }else{
-        const categoryAndSubCategoryToSearch = {category: "all"}
+        const categoryAndSubCategoryToSearch = {category: "all"};
         getCommands("/en", 1, categoryAndSubCategoryToSearch, "", false, false, true);
     }
 }
@@ -200,7 +200,7 @@ export const getCommands = async(lang, page, category, parameterCommandAndMeanin
         if(!data.total) changeHeightOfTable();
 
         // Handle pagination: create, paint selected page, ...
-        handlePagination(data);
+        handlePagination(data, firstSearch);
         const lang_response = data.lang;
     
         // Show data in list
@@ -551,7 +551,7 @@ export const handleToggleFiletrs = async(lang = "/en") => {
         circle.classList.add("toggle__slider--move-to-right");
     }
 
-    // Put subCategory like activ according to queryParam
+    // Put subCategory like active according to queryParam
     const indexCategoryFound = globalBufferFiltersCategories.map(i => i._id).findIndex(i => i === globalQueryOfFirstChargePage.category);
     if(globalBufferFiltersCategories[indexCategoryFound]?.subCategories?.length > 0){
         const subCategories_auxiliar = globalBufferFiltersCategories[indexCategoryFound].subCategories;
@@ -640,7 +640,6 @@ const handleBtnToggleCategories = (event, i, sizePreviouslyFilters) => {
  * Modify style according to active or not button in filters by queries "Seacrh by"
  * Only one filter can be actived
  * @param{number} sizeFilters
-
  */
 const handleBtnToggleQueries = (event, i, sizeFilters) => {
     const btn = document.getElementsByClassName("toggle")[i];
@@ -699,7 +698,7 @@ export const handleChangesUrl = () => {
         const queryObject = getQueries(window.location.search);
         const {page, lang, category, subcategory} = queryObject;
         const categoryAndSubCategoryToSearch = {category, subCategory: subcategory}
-        getCommands("/"+lang, page, categoryAndSubCategoryToSearch, getQueriesCommanMeaning(queryObject), true);
+        getCommands("/"+lang, page < 1 ? 4: page, categoryAndSubCategoryToSearch, getQueriesCommanMeaning(queryObject), true);
     }
 }
 

@@ -37,8 +37,15 @@ footer > div a:focus{
 }
 
 .version-app{
-    cursor: pointer;
-}
-.version-app:hover{
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
     color: #FFF;
+    cursor: pointer;
+    padding: 2px;
+}
+.version-app:hover,
+.version-app:focus{
+    box-shadow:  0px 0px 15px 2px #ce04a2;
+    outline: 2px solid #ce04a2;
 }
