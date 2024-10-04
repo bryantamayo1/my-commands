@@ -2,65 +2,56 @@ import { getCommands } from "./app";
 import { getQueries } from "./utils";
 
 // Global variables
-const global_buffer_pagination = [];
-const global_limit_btns = 5;
+let globalBufferPagination = [];
+/**
+ * It's depends on data.pages
+ */
+let  globalLimitBtns = 5;
+let limitLeft = 0, limitRight = 0;
 
 /**
  * Hnadle pagination according to GET /commands
  * @param {object} data providing of BE
- * @param {boolean} btn_search 
+ * @param {boolean} firstSearch 
  */
-export const handlePagination = (data) => {    
-    debugger
-    const amount_pages = Math.ceil(data.total / data.limitPage);
-    data.amount_pages = amount_pages;
+export const handlePagination = (data, firstSearch) => {    
+    // Validation
+    if(data.pages < globalLimitBtns) globalLimitBtns =  data.pages;
 
-    // Create start actived position
-    global_buffer_pagination[0] = { active: true, page: data.page }
-    
-    // Create limit position
-    let aux_rest = data.pages - data.page;
-    let limitPage = global_limit_btns;
-    if(aux_rest <= global_limit_btns){
-        limitPage = aux_rest;
+    // Fill pagination's buffer according to limits
+    if(firstSearch){
+        if(data.page <= globalLimitBtns){
+            limitLeft = 1;
+        }else{
+            limitLeft = data.page;
+            if(data.pages - data.page < globalLimitBtns){
+                limitLeft = data.page - globalLimitBtns + 1;
+            }
+        } 
+        limitRight = data.pages - data.page < globalLimitBtns ?
+        limitLeft + (data.pages - data.page) : limitLeft + globalLimitBtns - 1;
+        
+        if(data.pages - data.page < globalLimitBtns){
+            limitRight = data.page;
+        }
+
+
+        globalBufferPagination = [];
+        for(let i = limitLeft; i <= limitRight; i++){
+            globalBufferPagination.push({ active: false, page: i });
+            const indexFound = globalBufferPagination.findIndex(e => e.page === data.page);
+            if(indexFound !== -1){
+                globalBufferPagination[indexFound].active = true;
+            }
+     
+        }
     }
-
-    // Fill pagination's buffer
-    for(let i = 2; i <= limitPage; i++){
-        global_buffer_pagination.push({ active: false, page: i });
-    }
-
-    // Push global_buffer_pagination, because this function is called several times
-    // if(!global_buffer_pagination.length){
-    //     for(let i = 1; i <= global_limit_btns; i++){
-    //         global_buffer_pagination.push({ active: false, page: i });
-    //     }
-
-    //     // Special case
-    //     // Fill page according this conditions
-    //     if(data.page - 1 >= global_limit_btns){
-    //         for(let i = global_limit_btns + 1; i <= data.page; i++){
-    //             global_buffer_pagination.push({ active: false, page: i });
-    //         }
-    //     }
-
-    //     // Active btn page
-    //     global_buffer_pagination[data.page - 1] = {active: true, page: data.page}
-    // }else{
-    //     // Check last number in pagination in new search
-    //     const page_current = global_buffer_pagination.find(i => i.page === data.page);
-    //     if(!page_current){
-    //         global_buffer_pagination.forEach((item, index) => item.page = index + 1);
-    //     }
-    // }
-    // console.log("1º global_buffer_pagination: ", global_buffer_pagination);
-
-    createBtnPagination(amount_pages, data);
+    createBtnPagination(data.pages, data);
 }
 
 /**
- * Clean and create btns of pagination
- * @param {number} increase
+ * Clean and create btns of pagination, only show 
+ * @param {number} increase It can be -1 or 1
  */
 const createBtnPagination = (amount_pages, data, increase = 0) => {
     // Clean pagination
@@ -74,40 +65,32 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
         pagination_container_aux.classList.remove("not-visible");
     }
 
-    // Create btns in pagination
-    const rest = data.page % global_limit_btns;
-    let indexStartPagination = 1;
-    if(rest){
-        indexStartPagination = data.page - rest + 1;
-    }else{
-        indexStartPagination = data.page - global_limit_btns + 1;
-    }
-    
-    // Move pagination to other 5 btns. Better copy with classic for and not forEach
-    global_buffer_pagination.forEach(item => {
-        if(increase === 1){
-            item.page+=global_limit_btns;
-        }else if(increase === -1){
-            item.page-=global_limit_btns;
+    // Rotate pages in pagination
+    if(increase){
+        if(increase === -1){
+            globalBufferPagination.pop();
+            globalBufferPagination.unshift({
+                active: false,
+                page: globalBufferPagination[0].page - 1
+             })
+        }else{
+            globalBufferPagination.shift();
+            globalBufferPagination.push({
+                active: false,
+                page: globalBufferPagination[globalBufferPagination.length - 1].page + 1
+            })
         }
-    });
-
-    // Calculate limite of pages inn pagination
-    let limit_buffer_pagination = 5;
-    let find_limit_n_buffer_pagination = global_buffer_pagination.map(i => i.page).indexOf(data.amount_pages);
-
-    if(find_limit_n_buffer_pagination === -1){
-        find_limit_n_buffer_pagination = limit_buffer_pagination;
-    }else{
-        find_limit_n_buffer_pagination+=1;
     }
 
-    for(let i = 0; i < find_limit_n_buffer_pagination;  i++){
+    // Calculate real index because array of globalBufferPagination has length of 5 or less
+    const auxLimitRight = limitRight - limitLeft < globalLimitBtns ?
+     limitRight - limitLeft + 1: globalLimitBtns; 
+    for(let i = 1; i <= auxLimitRight;  i++){
         const pagination_container = document.getElementsByClassName("pagination-container")[0];
         const btn_pagination = document.createElement('button');
         btn_pagination.classList.add("btn-pagination");
-        btn_pagination.addEventListener("click", event => handleBtnPagination(event, global_buffer_pagination[i].page) );
-        btn_pagination.appendChild( document.createTextNode( global_buffer_pagination[i]?.page ) );
+        btn_pagination.addEventListener("click", event => handleBtnPagination(event, globalBufferPagination[i - 1].page) );
+        btn_pagination.appendChild( document.createTextNode( globalBufferPagination[i - 1]?.page ) );
         pagination_container.appendChild(btn_pagination);
     }
 
@@ -120,7 +103,7 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
             item.classList.add("btn-pagination-active");
         }
     });
-    global_buffer_pagination.forEach(item => {
+    globalBufferPagination.forEach(item => {
         item.active = false;
         if(item.page === data.page){
             item.active = true;
@@ -128,7 +111,7 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
     });
 
     // Put btn next
-    if(amount_pages > global_buffer_pagination[global_buffer_pagination.length - 1].page){
+    if(amount_pages > globalBufferPagination[globalBufferPagination.length - 1].page){
         const pagination_container = document.getElementsByClassName("pagination-container")[0];
         const btn_pagination = document.createElement('button');
         btn_pagination.classList.add("btn-pagination");
@@ -138,7 +121,7 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
     }
     
     // Put btn before
-    if(global_buffer_pagination[0].page !== 1){
+    if(globalBufferPagination[0].page !== 1){
         const pagination_container = document.getElementsByClassName("pagination-container")[0];
         const btn_pagination_first = document.getElementsByClassName("btn-pagination")[0];
         const btn_pagination = document.createElement('button');
@@ -147,9 +130,6 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
         btn_pagination.appendChild( document.createTextNode("<") );
         pagination_container.insertBefore(btn_pagination, btn_pagination_first);
     }
-
-    // console.log("2º global_buffer_pagination: ", global_buffer_pagination);
-
 }
 
 /**
@@ -169,6 +149,5 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
  * @param {*} event 
  */
 const handleNextPagination = (event, amount_pages, data, index_to_move) => {
-    debugger
     createBtnPagination(amount_pages, data, index_to_move);
 }
