@@ -1,5 +1,6 @@
 import dataJson from '../data.json';
 import { handleCloseFilters } from '../effects';
+import { createQuery } from '../queries/handleQueries';
 
 /**
  * Change all words according to selected language
@@ -66,6 +67,10 @@ export const handleLanguages = (lang = "en") => {
     // Version 0.0.3_1
     const v_0_0_3_1 = document.getElementById("0.0.3_1");
     v_0_0_3_1.innerHTML = data["0.0.3_1"][lang];
+
+    // Version 0.0.4_1
+    const v_0_0_4_1 = document.getElementById("0.0.4_1");
+    v_0_0_4_1.innerHTML = data["0.0.4_1"][lang];
 }
 
 /**
@@ -82,6 +87,12 @@ export const getDefaultLanguageOfBrowser = () => {
         return DEFAULT_LANGUAGE;
     }
     return langDefaultOfBrowser
+}
+
+export const changeLangInQuery = (queryObject, language) => {
+    queryObject.lang = language;
+    return createQuery(queryObject);
+
 }
 
 export const LANGS = Object.freeze({

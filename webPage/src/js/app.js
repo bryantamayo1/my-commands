@@ -12,13 +12,14 @@ import '../styles/icons.css';
 import Prism                    from './prism';
 import { Services }             from './services';
 import { changeHeightOfTable, closeMenuFilter} from './effects';
-import { colorsEnum, getQueries, getQueriesCommanMeaning, parseQuery } from './utils';
+import { colorsEnum, getQueriesCommanMeaning, parseQuery } from './utils';
 import { handlePagination }     from './pagination';
-import { handleLanguages }      from './languages/handleLanguages';
+import { changeLangInQuery, handleLanguages }      from '@js/languages/handleLanguages';
 import { activeOrDesactiveToggles, createSubCategories, template_Menu_filter } from './menuFilter';
 import dataJson                 from './data.json';
 import { openModal }            from './modalCommand';
-import { createQuery, defaultQuery } from '@js/queries/handleQueries';
+import { createQuery, defaultQuery, getQueries } from '@js/queries/handleQueries';
+import { LANGS } from '@js/languages/handleLanguages';
 
 ///////////////////
 // Global variables
@@ -322,7 +323,12 @@ const showTotalCommands = (total) => {
  export const handleButtonsLanguage = () => {
     const es = document.getElementById("es");
     const en = document.getElementById("en");
+    const queryObject = getQueries(window.location.search);
     
+    es.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.ES));
+    en.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.EN));
+
+
     es.addEventListener("click", () => {
 
         let query = window.location.search.split("");

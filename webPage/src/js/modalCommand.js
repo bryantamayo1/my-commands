@@ -1,4 +1,5 @@
-import { colorsEnum, getQueries }   from "./utils";
+import { colorsEnum }   from "./utils";
+import {getQueries}     from '@js/queries/handleQueries';
 import Prism            from './prism';
 import dataJson         from './data.json';
 import moment           from 'moment';
