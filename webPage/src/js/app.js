@@ -200,7 +200,7 @@ export const getCommands = async(lang, page, category, parameterCommandAndMeanin
         if(!data.total) changeHeightOfTable();
 
         // Handle pagination: create, paint selected page, ...
-        handlePagination(data, firstSearch);
+        handlePagination(data);
         const lang_response = data.lang;
     
         // Show data in list

@@ -1,0 +1,56 @@
+version: '3.8' 
+name: my-commands
+services:
+  web_app:
+    build: ./webApp
+    hostname: webApp
+    container_name: webApp
+    env_file: ./webApp/.env.development.local
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+
+  web_page:
+    build: 
+      context: ./webPage
+      args: 
+        API_URL: http://localhost:3020/api/v1
+        WEB_APP_UR: http://localhost:3000
+    hostname: webPage
+    container_name: webPage
+    ports:
+      - "3010:3010"
+    networks:
+      - backend
+
+  web_server:
+    build: ./webServer
+    hostname: webServer
+    container_name: webServer
+    env_file: ./webServer/.env.development.local
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mongo_db
+    ports:
+      - "3020:3020"
+    networks:
+      - backend
+
+  mongo_db:
+    image: mongo
+    hostname: mongoDb
+    container_name: mongoDb
+    env_file: ./webServer/.env.development.local
+    volumes:
+      - ./mongoDb/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+      - ./mongoDb/backup_db:/backup_db
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

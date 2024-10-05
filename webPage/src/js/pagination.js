@@ -3,39 +3,42 @@ import { getQueries } from "./utils";
 
 // Global variables
 let globalBufferPagination = [];
+const infoCurrentPagination = {
+    actionMove: false,
+    bufferPagination: []
+}
+const limitOfBtns = 5;
 /**
  * It's depends on data.pages
  */
-let  globalLimitBtns = 5;
+let  globalLimitBtns = limitOfBtns;
 let limitLeft = 0, limitRight = 0;
 
 /**
  * Hnadle pagination according to GET /commands
  * @param {object} data providing of BE
- * @param {boolean} firstSearch 
  */
-export const handlePagination = (data, firstSearch) => {    
-    // Validation
+export const handlePagination = (data) => {    
+    // Calculate globalLimitBtns, at that moment is 5 or less
+    globalLimitBtns = limitOfBtns;
     if(data.pages < globalLimitBtns) globalLimitBtns =  data.pages;
 
-    // Fill pagination's buffer according to limits
-    if(firstSearch){
+    if(!infoCurrentPagination.actionMove){
+        // Calculate the limits
         if(data.page <= globalLimitBtns){
             limitLeft = 1;
+            limitRight = globalLimitBtns;
         }else{
             limitLeft = data.page;
-            if(data.pages - data.page < globalLimitBtns){
+            limitRight = limitLeft + globalLimitBtns - 1; 
+            // Last pages
+            if(data.pages - data.page  + 1 < globalLimitBtns){
                 limitLeft = data.page - globalLimitBtns + 1;
+                limitRight = data.page;
             }
         } 
-        limitRight = data.pages - data.page < globalLimitBtns ?
-        limitLeft + (data.pages - data.page) : limitLeft + globalLimitBtns - 1;
-        
-        if(data.pages - data.page < globalLimitBtns){
-            limitRight = data.page;
-        }
-
-
+    
+        // Fill pagination's buffer according to limits
         globalBufferPagination = [];
         for(let i = limitLeft; i <= limitRight; i++){
             globalBufferPagination.push({ active: false, page: i });
@@ -43,9 +46,13 @@ export const handlePagination = (data, firstSearch) => {
             if(indexFound !== -1){
                 globalBufferPagination[indexFound].active = true;
             }
-     
         }
+
+    }else{
+        limitLeft = infoCurrentPagination.bufferPagination[0].page;
+        limitRight = infoCurrentPagination.bufferPagination[infoCurrentPagination.bufferPagination.length - 1].page;
     }
+
     createBtnPagination(data.pages, data);
 }
 
@@ -130,6 +137,9 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
         btn_pagination.appendChild( document.createTextNode("<") );
         pagination_container.insertBefore(btn_pagination, btn_pagination_first);
     }
+
+    // Create backup of globalBufferPagination
+    if(infoCurrentPagination.actionMove) infoCurrentPagination.bufferPagination = structuredClone(globalBufferPagination);
 }
 
 /**
@@ -149,5 +159,6 @@ const createBtnPagination = (amount_pages, data, increase = 0) => {
  * @param {*} event 
  */
 const handleNextPagination = (event, amount_pages, data, index_to_move) => {
+    infoCurrentPagination.actionMove = true;
     createBtnPagination(amount_pages, data, index_to_move);
 }
