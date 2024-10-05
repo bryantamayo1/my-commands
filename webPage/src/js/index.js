@@ -8,7 +8,6 @@ import { componentDidMount, getInitialQueries, goHome, handleButtonsLanguage, ha
  * First function in executing
  */
 function init() {
-    console.log("TEST: "+ process.env.API_URL)
     handleErrors();
     document.addEventListener("DOMContentLoaded", () => {
         componentDidMount();

@@ -1,5 +1,5 @@
 import { getCommands } from "./app";
-import { getQueries } from "./utils";
+import { getQueries } from "@js/queries/handleQueries";
 
 // Global variables
 let globalBufferPagination = [];

@@ -45,8 +45,8 @@
             "es": "Creado en: "
         },
         "version": {
-            "en": "Version 0.0.3",
-            "es": "Versión 0.0.3"
+            "en": "Version 0.0.4",
+            "es": "Versión 0.0.4"
         },
         "0.0.1_1": {
             "en": "Added control of app’s vesion",
@@ -63,6 +63,10 @@
         "0.0.3_1": {
             "en": "Added handle of user’s roles",
             "es": "Añadido control de roles de usuarios"
+        },
+        "0.0.4_1": {
+            "en": "Fixed bug in pagination in the web page",
+            "es": "Arreglado bug en paginación en la página web"
         }
     }
 }

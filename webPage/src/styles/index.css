@@ -42,8 +42,10 @@ header img{
     align-items: center;
     border-color: transparent;
     background-color: inherit;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
+    padding: 5px;
 }
 .btn-lang:focus{
     background-color: #252529;
