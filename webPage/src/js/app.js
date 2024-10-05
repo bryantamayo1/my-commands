@@ -323,11 +323,6 @@ const showTotalCommands = (total) => {
  export const handleButtonsLanguage = () => {
     const es = document.getElementById("es");
     const en = document.getElementById("en");
-    const queryObject = getQueries(window.location.search);
-    
-    es.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.ES));
-    en.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.EN));
-
 
     es.addEventListener("click", () => {
 

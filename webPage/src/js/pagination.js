@@ -1,5 +1,5 @@
-import { getCommands } from "./app";
-import { getQueries } from "@js/queries/handleQueries";
+import { getCommands }  from "./app";
+import { getQueries }   from "@js/queries/handleQueries";
 
 // Global variables
 let globalBufferPagination = [];
@@ -49,8 +49,23 @@ export const handlePagination = (data) => {
         }
 
     }else{
-        limitLeft = infoCurrentPagination.bufferPagination[0].page;
-        limitRight = infoCurrentPagination.bufferPagination[infoCurrentPagination.bufferPagination.length - 1].page;
+        if(data.page === 1){
+            globalBufferPagination = [];
+            infoCurrentPagination.actionMove = false;
+            infoCurrentPagination.bufferPagination = [];
+            limitLeft = 1;
+            limitRight = data.pages <= limitOfBtns ? data.pages : limitOfBtns;
+            for(let i = limitLeft; i <= limitRight; i++){
+                globalBufferPagination.push({ active: false, page: i });
+                const indexFound = globalBufferPagination.findIndex(e => e.page === data.page);
+                if(indexFound !== -1){
+                    globalBufferPagination[indexFound].active = true;
+                }
+            }
+        }else{
+            limitLeft = infoCurrentPagination.bufferPagination[0].page;
+            limitRight = infoCurrentPagination.bufferPagination[infoCurrentPagination.bufferPagination.length - 1].page;
+        }
     }
 
     createBtnPagination(data.pages, data);

@@ -1,3 +1,8 @@
+import { getQueries } from '@js/queries/handleQueries';
+import { changeLangInQuery }      from '@js/languages/handleLanguages';
+import { LANGS } from '@js/languages/handleLanguages';
+
+
 /**
  * Hnadler of all endpoints
  * @param {string} endpoint e.g. '/filters'
@@ -36,6 +41,15 @@ export class Services{
             `?page=${page}&lang=${lang.slice(1, lang.length)}&category=${categoryAndSubCategoryToSearch.category}`;
             if(subCategory) newurl += "&subcategory=" + categoryAndSubCategoryToSearch.subCategory;
             window.history.replaceState({path:newurl},'',newurl);
+
+            const es = document.getElementById("es");
+            const en = document.getElementById("en");
+    
+            const queryObject = getQueries(window.location.search);
+    
+            es.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.ES));
+            en.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.EN));
+    
         }
         /**
          * url to search in BE
@@ -48,6 +62,7 @@ export class Services{
             `?page=${page}&lang=${lang.slice(1, lang.length)}&category=${categoryAndSubCategoryToSearch.category}`;
             if(subCategory) newurl += "&subcategory=" + categoryAndSubCategoryToSearch.subCategory;
             window.history.replaceState({path:newurl},'',newurl);
+
 
         // Update query in window.history
         }else if (history.pushState && !fromQueryUrl && !defaultSearch) {
@@ -70,6 +85,15 @@ export class Services{
             window.history.pushState({path:newurl},'',newurl);
             query = "";
         }
+
+
+        const es = document.getElementById("es");
+        const en = document.getElementById("en");
+
+        const queryObject = getQueries(window.location.search);
+
+        es.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.ES));
+        en.setAttribute("href", "/?" + changeLangInQuery(queryObject, LANGS.EN));
 
         urlToSearch = `/commands${lang}?page=${page}&category=${categoryAndSubCategoryToSearch.category}${query}`;
         // This case is parsed only in FE, not in BE
