@@ -20,11 +20,53 @@ My Commands
 
 <br/>
 
+<h4>
+Screenshot: Page main
+</h4>
+
 ![Home page](/webPage/docs/home_page.PNG) 
 <br/>
 <br/>
 
+<h4>
+Screenshot: Info about a command
+</h4>
+
 ![Modal](/webPage/docs/modal.PNG) 
+<br/>
+<br/>
+
+<h4>
+Screenshot: Login page
+</h4>
+
+![Modal](/webPage/docs/web-app-login.png) 
+<br/>
+<br/>
+
+<h4>
+Screenshot: Home page
+</h4>
+
+![Modal](/webPage/docs/web-app-home.png) 
+<br/>
+<br/>
+
+<h4>
+Screenshot: Categories page
+</h4>
+
+![Modal](/webPage/docs/web-app-categories.png) 
+<br/>
+<br/>
+
+<h4>
+Screenshot: Commands page
+</h4>
+
+![Modal](/webPage/docs/web-app-commands.png) 
+<br/>
+<br/>
 
 ## Table of contents
 - [Table of contents](#table-of-contents)
