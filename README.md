@@ -18,14 +18,11 @@ My Commands
 
 > Platform built with JavaScript & TypeScript & HTML5 & CCS3 & [template-web-dotenv](https://github.com/bryantamayo1/template-web-dotenv) tools. Link: https://mycommands.es  
 
-<br/>
-
 <h4>
 Screenshot: Page main
 </h4>
 
 ![Home page](/webPage/docs/home_page.PNG) 
-<br/>
 <br/>
 
 <h4>
@@ -34,14 +31,12 @@ Screenshot: Info about a command
 
 ![Modal](/webPage/docs/modal.PNG) 
 <br/>
-<br/>
 
 <h4>
 Screenshot: Login page
 </h4>
 
 ![Modal](/webPage/docs/web-app-login.png) 
-<br/>
 <br/>
 
 <h4>
@@ -50,14 +45,12 @@ Screenshot: Home page
 
 ![Modal](/webPage/docs/web-app-home.png) 
 <br/>
-<br/>
 
 <h4>
 Screenshot: Categories page
 </h4>
 
 ![Modal](/webPage/docs/web-app-categories.png) 
-<br/>
 <br/>
 
 <h4>
